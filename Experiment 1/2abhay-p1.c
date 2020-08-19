@@ -1,9 +1,9 @@
 // Design and implement a lexical analyzer for given language using C. The lexical analyzer should ignore redundant spaces, tabs and newlines.
 
-#include <stdio.h>
-#include <string.h>
-#include <regex.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <regex.h>
+#include <string.h>
 #include <stdlib.h>
 
 // Function protypes
@@ -11,9 +11,9 @@ void skipLine(FILE *file);
 int checkKeyword(char token[]);
 int checkIdentifier(char token[]);
 int isNumber(char token[], int size);
+void skipMultilineComment(FILE *file);
 
-void main()
-{
+void main() {
     FILE *file;
     char filename[50];
 
@@ -23,90 +23,97 @@ void main()
 
     // Open file
     file = fopen(filename, "r");
-    if (file == NULL)
-    {
+    if (file == NULL) {
         printf("File does not exist or you don't have the permission to open it.");
         exit(0);
     }
+    printf("\n----- ANALYSED OUTPUT -----\n");
 
     // Read contents from file
     int i = 0;
     char ch, token[50];
-    while ((ch = fgetc(file)) != EOF)
-    {
-        // Step 1: Ignore comments
-        if (ch == '/')
-        {
-            if (fgetc(file) == '/')
-                skipLine(file);
-            else
-                fseek(file, -1, SEEK_CUR);
+    while ((ch = fgetc(file)) != EOF) {
+        switch (ch) {
+        // Step 1: Ignore comments and pre-processor directives and functions.
+        case '/':
+            ch = getc(file);
 
-            i = 0;
-        }
-
-        // Step 2: Ignoring preprocessor directives
-        else if (ch == '#')
+            // Multiline comments
+            if (ch == '*') {
+                skipMultilineComment(file);
+                break;
+            }
+        case '#':
             skipLine(file);
+        case '(':
+            token[i] = '\0';
+            if (strcmp(token, "main") == 0)
+                printf("\b\b\b\b");
 
-        else if(ch == '(') {
             i = 0;
             token[i] = '\0';
-        }
+            break;
 
-        // Printing strings as it is
-        else if(ch == '\"') {
+        // Step 2: Print strings as it is.
+        case '\"':
+            printf("\"");
             do {
                 ch = getc(file);
                 printf("%c", ch);
-            } while(ch != '\"');
+            } while (ch != '\"');
             printf(" ");
-        }
+            break;
 
+        default:
+            // Every token is separated by a non-alphanumeric character.
+            if (!isalnum(ch)) {
+                token[i] = '\0';
 
-        else if (!isalnum(ch))
-        {
-            token[i] = '\0';
+                // Step 3: Check if token is a keyword
+                if (checkKeyword(token))
+                    printf("kwd ");
 
-            // Step 3: Check whether it is a keyword
-            if (checkKeyword(token))
-                printf("kwd ");
+                // Step 4: Check if token is an identifier
+                else if (checkIdentifier(token))
+                    printf("id ");
 
-            // Step 4: Check whether it is an identifier
-            else if (checkIdentifier(token))
-                printf("id ");
+                // Step 5: Check if token is a number
+                else if (isNumber(token, i))
+                    printf("%s ", token);
 
-            else if(isNumber(token, i)) 
-                printf("%s ", token);
+                i = 0;
 
-            i = 0;
+                switch (ch) {
+                // Step 6: Check if character is an operator
+                case '+':
+                    printf("oper-add ");
+                    break;
+                case '-':
+                    printf("oper-sub ");
+                    break;
+                case '*':
+                    printf("oper-mul ");
+                    break;
+                case '/':
+                    printf("oper-div ");
+                    break;
+                case '%':
+                    printf("oper-mod ");
+                    break;
+                case '=':
+                    printf("oper-equ ");
+                    break;
 
-            switch (ch)
-            {
-            case '+':
-                printf("oper-add ");
-                break;
-            case '-':
-                printf("oper-sub ");
-                break;
-            case '*':
-                printf("oper-mul ");
-                break;
-            case '/':
-                printf("oper-div ");
-                break;
-            case '=':
-                printf("oper-equ ");
-                break;
-            case ',':
-               
-            case ';':
-                printf("\b%c", ch);
-                break;
+                // Step 7: Check for other separators
+                case ',':
+                case ';':
+                    printf("\b%c", ch);
+                    break;
+                }
             }
+            else
+                token[i++] = ch;
         }
-        else
-            token[i++] = ch;
     }
 
     printf("\n");
@@ -114,8 +121,7 @@ void main()
 }
 
 // Function: Returns 1 if the token is a reserved keyword. Else it returns 0.
-int checkKeyword(char token[])
-{
+int checkKeyword(char token[]) {
     // List of all valid keywords
     const char *keywords[] = {
         "auto",
@@ -153,16 +159,13 @@ int checkKeyword(char token[])
     };
 
     for (int i = 0; i < 32; i++)
-    {
         if (strcmp(*(keywords + i), token) == 0)
             return 1;
-    }
     return 0;
 }
 
 // Function: Returns 1 if the token is a valid identifier. Else it returns 0.
-int checkIdentifier(char token[])
-{
+int checkIdentifier(char token[]) {
     // Regular expression for a valid C identifier
     regex_t regex;
     char *pattern = "[_a-zA-Z][_a-zA-Z0-9]{0,30}";
@@ -178,9 +181,20 @@ int checkIdentifier(char token[])
     return 1;
 }
 
-// Function to skip the current line
-void skipLine(FILE *file)
-{
+// Function: Returns 1 if the token is a number. Else it returns 0.
+int isNumber(char token[], int size) {
+    if (size == 0)
+        return 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (!isdigit(token[i]))
+            return 0;
+    }
+    return 1;
+}
+
+// Function: Skip the current line
+void skipLine(FILE *file) {
     char ch;
     int condition = 1;
     char *comment;
@@ -191,11 +205,17 @@ void skipLine(FILE *file)
     } while (condition);
 }
 
-// Function: Returns 1 if the token is a number. Else it returns 0.
-int isNumber(char token[], int size) {
-    for(int i=0; i<size; i++) {
-        if(!isdigit(token[i]))
-            return 0;
+// Function: Skip multiline comment
+void skipMultilineComment(FILE *file) {
+    char ch = getc(file), nextChar;
+    while (1) {
+        if (ch == '*') {
+            char nextChar = getc(file);
+            if (nextChar == '/')
+                return;
+            else
+                fseek(file, -1, SEEK_CUR);
+        }
+        ch = getc(file);
     }
-    return 1;
 }
