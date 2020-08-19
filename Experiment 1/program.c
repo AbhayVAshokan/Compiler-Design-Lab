@@ -5,8 +5,12 @@
 #include <ctype.h>
 
 void main() {
+
+    /* This is a 
+       multiline comment */
+   
     int num1, num2, sum;
-    
+
     num1 = 10;
     num2 = 20;
 
