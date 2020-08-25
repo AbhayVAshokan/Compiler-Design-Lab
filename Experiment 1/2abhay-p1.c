@@ -24,7 +24,7 @@ void main() {
     // Open file
     file = fopen(filename, "r");
     if (file == NULL) {
-        printf("File does not exist or you don't have the permission to open it.");
+        printf("File does not exist or you don't have the permission to open it.\n");
         exit(0);
     }
     printf("\n----- ANALYSED OUTPUT -----\n");
@@ -105,6 +105,7 @@ void main() {
                     break;
 
                 // Step 7: Check for other separators
+		case '.':
                 case ',':
                 case ';':
                     printf("\b%c", ch);

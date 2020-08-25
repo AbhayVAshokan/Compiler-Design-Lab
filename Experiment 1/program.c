@@ -6,10 +6,11 @@
 
 void main() {
 
-    /* This is a 
+    /* This is a
        multiline comment */
-   
+
     int num1, num2, sum;
+    float num3 = 5.5;
 
     num1 = 10;
     num2 = 20;
