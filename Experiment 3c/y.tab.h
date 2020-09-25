@@ -75,7 +75,7 @@ union YYSTYPE
 {
 #line 22 "2Abhay-P3c.y"
 
-char var[10];
+    char var[10];
 
 #line 81 "y.tab.h"
 

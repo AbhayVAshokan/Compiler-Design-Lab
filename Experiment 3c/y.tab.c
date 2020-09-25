@@ -161,7 +161,7 @@ union YYSTYPE
 {
 #line 22 "2Abhay-P3c.y"
 
-char var[10];
+    char var[10];
 
 #line 167 "y.tab.c"
 
@@ -537,12 +537,12 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
-       0,    31,    31,    33,    35,    36,    37,    39,    40,    41,
-      42,    44,    46,    47,    49,    57,    58,    59,    60,    61,
-      62,    63,    64,    66,    72,    74,    74,    88,    88,    98,
-     101,   102,   104,   111,   111
+       0,    34,    34,    37,    40,    41,    42,    45,    46,    47,
+      48,    51,    54,    55,    58,    67,    70,    73,    76,    79,
+      82,    85,    86,    89,    95,    98,    98,   116,   116,   128,
+     132,   133,   136,   144,   144
 };
 #endif
 
@@ -1368,155 +1368,170 @@ yyreduce:
   switch (yyn)
     {
   case 14:
-#line 49 "2Abhay-P3c.y"
-                        {
-strcpy(QUAD[Index].op,"=");
-strcpy(QUAD[Index].arg1,(yyvsp[0].var));
-strcpy(QUAD[Index].arg2,"");
-strcpy(QUAD[Index].result,(yyvsp[-2].var));
-strcpy((yyval.var),QUAD[Index++].result);
-}
+#line 58 "2Abhay-P3c.y"
+                                            {
+                                strcpy(QUAD[Index].op, "=");
+                                strcpy(QUAD[Index].arg1, (yyvsp[0].var));
+                                strcpy(QUAD[Index].arg2, "");
+                                strcpy(QUAD[Index].result, (yyvsp[-2].var));
+                                strcpy((yyval.var), QUAD[Index++].result);
+                            }
 #line 1380 "y.tab.c"
     break;
 
   case 15:
-#line 57 "2Abhay-P3c.y"
-                    {AddQuadruple("+",(yyvsp[-2].var),(yyvsp[0].var),(yyval.var));}
-#line 1386 "y.tab.c"
+#line 67 "2Abhay-P3c.y"
+                                          {
+                                AddQuadruple("+", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
+                            }
+#line 1388 "y.tab.c"
     break;
 
   case 16:
-#line 58 "2Abhay-P3c.y"
-                {AddQuadruple("-",(yyvsp[-2].var),(yyvsp[0].var),(yyval.var));}
-#line 1392 "y.tab.c"
+#line 70 "2Abhay-P3c.y"
+                                          {
+                                AddQuadruple("-", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
+                            }
+#line 1396 "y.tab.c"
     break;
 
   case 17:
-#line 59 "2Abhay-P3c.y"
-                {AddQuadruple("*",(yyvsp[-2].var),(yyvsp[0].var),(yyval.var));}
-#line 1398 "y.tab.c"
-    break;
-
-  case 18:
-#line 60 "2Abhay-P3c.y"
-                {AddQuadruple("/",(yyvsp[-2].var),(yyvsp[0].var),(yyval.var));}
+#line 73 "2Abhay-P3c.y"
+                                          {
+                                AddQuadruple("*", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
+                            }
 #line 1404 "y.tab.c"
     break;
 
+  case 18:
+#line 76 "2Abhay-P3c.y"
+                                          {
+                                AddQuadruple("/", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
+                            }
+#line 1412 "y.tab.c"
+    break;
+
   case 19:
-#line 61 "2Abhay-P3c.y"
-           {AddQuadruple("UMIN",(yyvsp[0].var),"",(yyval.var));}
-#line 1410 "y.tab.c"
+#line 79 "2Abhay-P3c.y"
+                                     {
+                                AddQuadruple("UMIN", (yyvsp[0].var), "", (yyval.var));
+                            }
+#line 1420 "y.tab.c"
     break;
 
   case 20:
-#line 62 "2Abhay-P3c.y"
-               {strcpy((yyval.var),(yyvsp[-1].var));}
-#line 1416 "y.tab.c"
+#line 82 "2Abhay-P3c.y"
+                                         {
+                                strcpy((yyval.var),(yyvsp[-1].var));
+                            }
+#line 1428 "y.tab.c"
     break;
 
   case 23:
-#line 66 "2Abhay-P3c.y"
-            {
-Ind=pop();
-sprintf(QUAD[Ind].result,"%d",Index);
-Ind=pop();
-sprintf(QUAD[Ind].result,"%d",Index);
-}
-#line 1427 "y.tab.c"
+#line 89 "2Abhay-P3c.y"
+                                 {
+                                Ind = pop();
+                                sprintf(QUAD[Ind].result, "%d", Index);
+                                Ind = pop();
+                                sprintf(QUAD[Ind].result, "%d", Index);
+                            }
+#line 1439 "y.tab.c"
     break;
 
   case 25:
-#line 74 "2Abhay-P3c.y"
-                           {
-strcpy(QUAD[Index].op,"==");
-strcpy(QUAD[Index].arg1,(yyvsp[-1].var));
-strcpy(QUAD[Index].arg2,"FALSE");
-strcpy(QUAD[Index].result,"-1");
-push(Index);
-Index++;
-}
-#line 1440 "y.tab.c"
+#line 98 "2Abhay-P3c.y"
+                                                 {
+                                strcpy(QUAD[Index].op, "==");
+                                strcpy(QUAD[Index].arg1, (yyvsp[-1].var));
+                                strcpy(QUAD[Index].arg2, "FALSE");
+                                strcpy(QUAD[Index].result, "-1");
+                                push(Index);
+                                Index++;
+                            }
+#line 1452 "y.tab.c"
     break;
 
   case 26:
-#line 82 "2Abhay-P3c.y"
-      { strcpy(QUAD[Index].op,"GOTO"); strcpy(QUAD[Index].arg1,""); 
-strcpy(QUAD[Index].arg2,"");
-strcpy(QUAD[Index].result,"-1");
-push(Index);
-Index++;
-}
-#line 1451 "y.tab.c"
+#line 107 "2Abhay-P3c.y"
+                                  { 
+                                strcpy(QUAD[Index].op, "GOTO"); 
+                                strcpy(QUAD[Index].arg1, ""); 
+                                strcpy(QUAD[Index].arg2, "");
+                                strcpy(QUAD[Index].result, "-1");
+                                push(Index);
+                                Index++;
+                            }
+#line 1465 "y.tab.c"
     break;
 
   case 27:
-#line 88 "2Abhay-P3c.y"
-            {
-tInd=pop();
-Ind=pop();
-push(tInd);
-sprintf(QUAD[Ind].result,"%d",Index);
-}
-#line 1462 "y.tab.c"
+#line 116 "2Abhay-P3c.y"
+                                 {
+                                tInd = pop();
+                                Ind = pop();
+                                push(tInd);
+                                sprintf(QUAD[Ind].result, "%d", Index);
+                            }
+#line 1476 "y.tab.c"
     break;
 
   case 28:
-#line 94 "2Abhay-P3c.y"
-     {
-Ind=pop();
-sprintf(QUAD[Ind].result,"%d",Index);
-}
-#line 1471 "y.tab.c"
+#line 123 "2Abhay-P3c.y"
+                                  {
+                                Ind=pop();
+                                sprintf(QUAD[Ind].result,"%d",Index);
+                            }
+#line 1485 "y.tab.c"
     break;
 
   case 29:
-#line 98 "2Abhay-P3c.y"
-                         {AddQuadruple((yyvsp[-1].var),(yyvsp[-2].var),(yyvsp[0].var),(yyval.var));
-StNo=Index-1;
-}
-#line 1479 "y.tab.c"
+#line 128 "2Abhay-P3c.y"
+                                          {
+                                AddQuadruple((yyvsp[-1].var), (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
+                                StNo=Index-1;
+                            }
+#line 1494 "y.tab.c"
     break;
 
   case 32:
-#line 104 "2Abhay-P3c.y"
-                  {
-Ind=pop();
-sprintf(QUAD[Ind].result,"%d",StNo);
-Ind=pop();
-sprintf(QUAD[Ind].result,"%d",Index);
-}
-#line 1490 "y.tab.c"
+#line 136 "2Abhay-P3c.y"
+                                        {
+                                Ind = pop();
+                                sprintf(QUAD[Ind].result, "%d", StNo);
+                                Ind = pop();
+                                sprintf(QUAD[Ind].result, "%d", Index);
+                            }
+#line 1505 "y.tab.c"
     break;
 
   case 33:
-#line 111 "2Abhay-P3c.y"
-                                 {
-strcpy(QUAD[Index].op,"==");
-strcpy(QUAD[Index].arg1,(yyvsp[-1].var));
-strcpy(QUAD[Index].arg2,"FALSE");
-strcpy(QUAD[Index].result,"-1");
-push(Index);
-Index++;
-}
-#line 1503 "y.tab.c"
+#line 144 "2Abhay-P3c.y"
+                                                  {
+                                strcpy(QUAD[Index].op, "==");
+                                strcpy(QUAD[Index].arg1, (yyvsp[-1].var));
+                                strcpy(QUAD[Index].arg2, "FALSE");
+                                strcpy(QUAD[Index].result, "-1");
+                                push(Index);
+                                Index++;
+                            }
+#line 1518 "y.tab.c"
     break;
 
   case 34:
-#line 119 "2Abhay-P3c.y"
-      {
-strcpy(QUAD[Index].op,"GOTO");
-strcpy(QUAD[Index].arg1,"");
-strcpy(QUAD[Index].arg2,"");
-strcpy(QUAD[Index].result,"-1");
-push(Index);
-Index++;
-}
-#line 1516 "y.tab.c"
+#line 153 "2Abhay-P3c.y"
+                                  {
+                                strcpy(QUAD[Index].op, "GOTO");
+                                strcpy(QUAD[Index].arg1, "");
+                                strcpy(QUAD[Index].arg2, "");
+                                strcpy(QUAD[Index].result, "-1");
+                                push(Index);
+                                Index++;
+                            }
+#line 1531 "y.tab.c"
     break;
 
 
-#line 1520 "y.tab.c"
+#line 1535 "y.tab.c"
 
       default: break;
     }
@@ -1748,60 +1763,66 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 128 "2Abhay-P3c.y"
+#line 163 "2Abhay-P3c.y"
+
 
 extern FILE *yyin;
-int main(int argc,char *argv[])
-{
-FILE *fp;
-int i;
-if(argc>1)
-{
-fp=fopen(argv[1],"r");
-if(!fp)
-{
-printf("\n File not found");
-exit(0);
+
+int main(int argc, char *argv[]) {
+    FILE *fp;
+    char filename[50];
+
+    // Input the file name of the program
+    printf("Enter the file name of the program: ");
+    scanf("%s", filename);
+
+    // Open file
+    fp = fopen(filename, "r");
+
+    if(fp == NULL) {
+        printf("File does not exist or you don't have the permission to open it.\n");
+        return 1;
+    }
+
+    yyin = fp;
+    yyparse();
+
+    printf("\n\n\t\t ----------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------");
+    for(int i = 0;i < Index; i++) 
+        printf("\n\t\t%d\t%s\t%s\t%s\t%s", i, QUAD[i].op,QUAD[i].arg1, QUAD[i].arg2, QUAD[i].result);
+    printf("\n\t\t -----------------------");
+    printf("\n\n"); return 0; 
 }
-yyin=fp;
+
+void push(int data) {
+    stk.top++;
+    
+    if(stk.top == 100) {
+        printf("\n Stack overflow\n");
+        exit(0);
+    }
+
+    stk.items[stk.top] = data;
 }
-yyparse();
-printf("\n\n\t\t ----------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------");
-for(i=0;i<Index;i++)
-{
-printf("\n\t\t%d\t%s\t%s\t%s\t%s",i,QUAD[i].op,QUAD[i].arg1,QUAD[i].arg2,QUAD[i].result);
+int pop() {
+    int data;
+    if(stk.top == -1) {
+    printf("\n Stack underflow\n");
+    exit(0);
+    }
+
+    data = stk.items[stk.top--];
+    return data;
 }
-printf("\n\t\t -----------------------");
-printf("\n\n"); return 0; }
-void push(int data)
-{ stk.top++;
-if(stk.top==100)
-{
-printf("\n Stack overflow\n");
-exit(0);
+
+void AddQuadruple(char op[5], char arg1[10], char arg2[10], char result[10]) {
+    strcpy(QUAD[Index].op, op);
+    strcpy(QUAD[Index].arg1, arg1);
+    strcpy(QUAD[Index].arg2, arg2);
+    sprintf(QUAD[Index].result, "t%d", tIndex++);
+    strcpy(result,QUAD[Index++].result);
 }
-stk.items[stk.top]=data;
-}
-int pop()
-{
-int data;
-if(stk.top==-1)
-{
-printf("\n Stack underflow\n");
-exit(0);
-}
-data=stk.items[stk.top--];
-return data;
-}
-void AddQuadruple(char op[5],char arg1[10],char arg2[10],char result[10])
-{
-strcpy(QUAD[Index].op,op);
-strcpy(QUAD[Index].arg1,arg1);
-strcpy(QUAD[Index].arg2,arg2);
-sprintf(QUAD[Index].result,"t%d",tIndex++);
-strcpy(result,QUAD[Index++].result);
-}
-yyerror()
-{
-printf("\n Error on line no:%d",lineCounter);
+
+yyerror(){
+    printf("\n Error on line no:%d",lineCounter);
 }
