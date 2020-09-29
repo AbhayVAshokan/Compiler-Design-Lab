@@ -73,7 +73,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "2Abhay-P3c.y"
+#line 24 "2Abhay-P3c.y"
 
     char var[10];
 

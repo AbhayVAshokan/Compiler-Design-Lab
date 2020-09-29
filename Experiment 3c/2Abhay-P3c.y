@@ -52,7 +52,7 @@ STATEMENT           :       DESCT ';'
 
 DESCT               :       TYPE VARLIST
                     ;
-
+3
 VARLIST             :       VAR ',' VARLIST
                     |       VAR
                     ;
@@ -185,10 +185,10 @@ int main(int argc, char *argv[]) {
     yyin = fp;
     yyparse();
 
-    printf("\n\n\t\t ----------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------");
+    printf("\n\n\t\t--------------------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------------------------");
     for(int i = 0;i < Index; i++) 
         printf("\n\t\t%d\t%s\t%s\t%s\t%s", i, QUAD[i].op,QUAD[i].arg1, QUAD[i].arg2, QUAD[i].result);
-    printf("\n\t\t -----------------------");
+    printf("\n\t\t-------------------------------------");
     printf("\n\n"); return 0; 
 }
 

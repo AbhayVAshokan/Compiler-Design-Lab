@@ -66,7 +66,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "2Abhay-P3c.y"
+#line 3 "2Abhay-P3c.y"
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -159,7 +159,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "2Abhay-P3c.y"
+#line 24 "2Abhay-P3c.y"
 
     char var[10];
 
@@ -539,10 +539,10 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    34,    34,    37,    40,    41,    42,    45,    46,    47,
-      48,    51,    54,    55,    58,    67,    70,    73,    76,    79,
-      82,    85,    86,    89,    95,    98,    98,   116,   116,   128,
-     132,   133,   136,   144,   144
+       0,    36,    36,    39,    42,    43,    44,    47,    48,    49,
+      50,    53,    56,    57,    60,    69,    72,    75,    78,    81,
+      84,    87,    88,    91,    97,   100,   100,   118,   118,   130,
+     134,   135,   138,   146,   146
 };
 #endif
 
@@ -1368,7 +1368,7 @@ yyreduce:
   switch (yyn)
     {
   case 14:
-#line 58 "2Abhay-P3c.y"
+#line 60 "2Abhay-P3c.y"
                                             {
                                 strcpy(QUAD[Index].op, "=");
                                 strcpy(QUAD[Index].arg1, (yyvsp[0].var));
@@ -1380,7 +1380,7 @@ yyreduce:
     break;
 
   case 15:
-#line 67 "2Abhay-P3c.y"
+#line 69 "2Abhay-P3c.y"
                                           {
                                 AddQuadruple("+", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
                             }
@@ -1388,7 +1388,7 @@ yyreduce:
     break;
 
   case 16:
-#line 70 "2Abhay-P3c.y"
+#line 72 "2Abhay-P3c.y"
                                           {
                                 AddQuadruple("-", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
                             }
@@ -1396,7 +1396,7 @@ yyreduce:
     break;
 
   case 17:
-#line 73 "2Abhay-P3c.y"
+#line 75 "2Abhay-P3c.y"
                                           {
                                 AddQuadruple("*", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
                             }
@@ -1404,7 +1404,7 @@ yyreduce:
     break;
 
   case 18:
-#line 76 "2Abhay-P3c.y"
+#line 78 "2Abhay-P3c.y"
                                           {
                                 AddQuadruple("/", (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
                             }
@@ -1412,7 +1412,7 @@ yyreduce:
     break;
 
   case 19:
-#line 79 "2Abhay-P3c.y"
+#line 81 "2Abhay-P3c.y"
                                      {
                                 AddQuadruple("UMIN", (yyvsp[0].var), "", (yyval.var));
                             }
@@ -1420,7 +1420,7 @@ yyreduce:
     break;
 
   case 20:
-#line 82 "2Abhay-P3c.y"
+#line 84 "2Abhay-P3c.y"
                                          {
                                 strcpy((yyval.var),(yyvsp[-1].var));
                             }
@@ -1428,7 +1428,7 @@ yyreduce:
     break;
 
   case 23:
-#line 89 "2Abhay-P3c.y"
+#line 91 "2Abhay-P3c.y"
                                  {
                                 Ind = pop();
                                 sprintf(QUAD[Ind].result, "%d", Index);
@@ -1439,7 +1439,7 @@ yyreduce:
     break;
 
   case 25:
-#line 98 "2Abhay-P3c.y"
+#line 100 "2Abhay-P3c.y"
                                                  {
                                 strcpy(QUAD[Index].op, "==");
                                 strcpy(QUAD[Index].arg1, (yyvsp[-1].var));
@@ -1452,7 +1452,7 @@ yyreduce:
     break;
 
   case 26:
-#line 107 "2Abhay-P3c.y"
+#line 109 "2Abhay-P3c.y"
                                   { 
                                 strcpy(QUAD[Index].op, "GOTO"); 
                                 strcpy(QUAD[Index].arg1, ""); 
@@ -1465,7 +1465,7 @@ yyreduce:
     break;
 
   case 27:
-#line 116 "2Abhay-P3c.y"
+#line 118 "2Abhay-P3c.y"
                                  {
                                 tInd = pop();
                                 Ind = pop();
@@ -1476,7 +1476,7 @@ yyreduce:
     break;
 
   case 28:
-#line 123 "2Abhay-P3c.y"
+#line 125 "2Abhay-P3c.y"
                                   {
                                 Ind=pop();
                                 sprintf(QUAD[Ind].result,"%d",Index);
@@ -1485,7 +1485,7 @@ yyreduce:
     break;
 
   case 29:
-#line 128 "2Abhay-P3c.y"
+#line 130 "2Abhay-P3c.y"
                                           {
                                 AddQuadruple((yyvsp[-1].var), (yyvsp[-2].var), (yyvsp[0].var), (yyval.var));
                                 StNo=Index-1;
@@ -1494,7 +1494,7 @@ yyreduce:
     break;
 
   case 32:
-#line 136 "2Abhay-P3c.y"
+#line 138 "2Abhay-P3c.y"
                                         {
                                 Ind = pop();
                                 sprintf(QUAD[Ind].result, "%d", StNo);
@@ -1505,7 +1505,7 @@ yyreduce:
     break;
 
   case 33:
-#line 144 "2Abhay-P3c.y"
+#line 146 "2Abhay-P3c.y"
                                                   {
                                 strcpy(QUAD[Index].op, "==");
                                 strcpy(QUAD[Index].arg1, (yyvsp[-1].var));
@@ -1518,7 +1518,7 @@ yyreduce:
     break;
 
   case 34:
-#line 153 "2Abhay-P3c.y"
+#line 155 "2Abhay-P3c.y"
                                   {
                                 strcpy(QUAD[Index].op, "GOTO");
                                 strcpy(QUAD[Index].arg1, "");
@@ -1763,7 +1763,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 163 "2Abhay-P3c.y"
+#line 165 "2Abhay-P3c.y"
 
 
 extern FILE *yyin;
@@ -1787,10 +1787,10 @@ int main(int argc, char *argv[]) {
     yyin = fp;
     yyparse();
 
-    printf("\n\n\t\t ----------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------");
+    printf("\n\n\t\t--------------------------------------""\n\t\t Pos Operator \tArg1 \tArg2 \tResult" "\n\t\t--------------------------------------");
     for(int i = 0;i < Index; i++) 
         printf("\n\t\t%d\t%s\t%s\t%s\t%s", i, QUAD[i].op,QUAD[i].arg1, QUAD[i].arg2, QUAD[i].result);
-    printf("\n\t\t -----------------------");
+    printf("\n\t\t-------------------------------------");
     printf("\n\n"); return 0; 
 }
 

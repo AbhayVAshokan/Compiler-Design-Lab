@@ -5,4 +5,6 @@ main() {
     c = 4;
 
     a = a + b;
+    c = a - b;
+    b = b * b;
 }
