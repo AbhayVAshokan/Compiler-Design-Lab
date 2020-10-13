@@ -52,7 +52,7 @@ STATEMENT           :       DESCT ';'
 
 DESCT               :       TYPE VARLIST
                     ;
-3
+
 VARLIST             :       VAR ',' VARLIST
                     |       VAR
                     ;
