@@ -148,11 +148,15 @@ void main() {
 
     printf("\nAlphabets: ");
     for (i = 0; i < noalpha; i++)
-        printf("%c ", alphabet[i]);
+        printf("%c, ", alphabet[i]);
 
     printf("\nStates: ");
-    for (i = 1; i <= nostate; i++)
-        print_e_closure(i);
+    for (i = 1; i <= nostate; i++) {
+         printf("{ ");
+        for (int j = 0; e_closure[i][j] != 0; j++)
+            printf("q%d, ", e_closure[i][j]);
+        printf("} ");
+    }
     
     printf("\n\nFinal states: ");
     findfinalstate();
@@ -188,3 +192,17 @@ void main() {
     }
     printf("\n");
 }
+
+// Sample Input
+// 4
+// a b c e
+// 3
+// 1
+// 1
+// 3
+// 5
+// 1 a 1
+// 2 b 2
+// 3 c 3
+// 1 e 2
+// 2 e 3

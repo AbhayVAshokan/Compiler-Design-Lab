@@ -1,4 +1,4 @@
-// Write a program to convert NFA to DFA.
+// Write a program to convert epsilon NFA to DFA.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -102,7 +102,7 @@ void displayEClosure(int states, int closure_ar[], char *closure_table[], char *
         bzero((void *)buffer, MAX_LEN);
         state(closure_ar, states, buffer);
         strcpy(&closure_table[i], buffer);
-        printf("%s", &closure_table[i]);
+        printf("%s ", &closure_table[i]);
     }
 }
 

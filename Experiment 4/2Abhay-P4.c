@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node
-{
+struct node {
     int value;
     struct node *link;
 };
@@ -19,8 +18,7 @@ static int e_closure[20][20] = { 0 };
 struct node *transition[20][20] = { NULL };
 static int set[20], nostate, noalpha, s, notransition, r, buffer[20];
 
-void main()
-{
+void main() {
     int i, j, k, m, t, n;
     struct node *temp;
 
@@ -119,3 +117,14 @@ void print_e_closure(int i) {
         printf("q%d, ", e_closure[i][j]);
     printf("}");
 }
+
+// Sample Input
+// 4
+// a b c e
+// 3
+// 5
+// 1 a 1
+// 2 b 2
+// 3 c 3
+// 1 e 2
+// 2 e 3
