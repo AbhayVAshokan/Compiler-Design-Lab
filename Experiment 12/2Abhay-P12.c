@@ -7,11 +7,12 @@ int countbit1(unsigned int n) {
 
     while (n != 0) {
         if (n & 1) {
-            printf("%d\n", n);
+            printf("%d -> ", n);
             bits++;
         }
         n >>= 1;
         i++;
+        printf("%d\n", n);
     }
     
     // i is the number of digits in the binary representation of n (number of iterations taken to compute bits).
@@ -23,6 +24,7 @@ int countbit1(unsigned int n) {
 int countbit2(unsigned int n) {
     int bits = 0, i = 0;
     while (n != 0) {
+        printf("%d -> ", n);
         if (n & 1)
             bits++;
         if (n & 2)
@@ -33,6 +35,7 @@ int countbit2(unsigned int n) {
             bits++;
         n >>= 4;
         i++;
+        printf("%d\n", n);
     }
     
     // i is the number of iterations taken to compute bits (number of digits of n / 4).
